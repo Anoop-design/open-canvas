@@ -13,7 +13,7 @@ The agent does the recording. You see what happened in the app, and only a perso
 
    > Run `"/Applications/Open Canvas.app/Contents/Helpers/canvas" setup`
 
-   This installs the `open-canvas` and `canvas-explorer` skills for Claude Code (`~/.claude/skills`) and Codex (`~/.codex/skills`), and puts `canvas` on your PATH.
+   This installs the `open-canvas`, `open-canvas-catchup` and `canvas-explorer` skills for Claude Code (`~/.claude/skills`) and Codex (`~/.codex/skills`), and puts `canvas` on your PATH.
 3. In a project's repository, ask your agent: "Set up Open Canvas here." It runs `canvas init`.
 
 Only want the command? Each release also has `canvas-<version>-macos.zip` (signed and notarised) and the skills on their own. The skills are also in [`skills/`](skills).
@@ -39,7 +39,15 @@ and adds a short note to `AGENTS.md` (and `CLAUDE.md` if you have one) so every 
 
 ## Projects that already exist
 
-Ask your agent to catch the project up. It runs `canvas init`, reads the history (README, docs, `git log`, design notes, and your chats if the project is in Open Canvas), and records the decisions that shaped it with their dates, as drafts for you to accept.
+Ask your agent to catch the project up (the `open-canvas-catchup` skill). It runs `canvas init`, reads the history (README, docs, `git log`, design notes, and your chats if the project is in Open Canvas), and records the decisions that shaped it with their dates, as drafts for you to accept.
+
+## Light on tokens
+
+Recording a decision is one short command, so it costs almost nothing in your session. The heavy work runs small:
+
+- In Claude Code, `open-canvas-catchup` and `canvas-explorer` run on their own on Haiku at low effort, so reading a project's history doesn't spend your main model's tokens.
+- When the app asks an agent to find decisions or directions, it uses a small model at low effort by default (Claude: Haiku; Codex: low reasoning effort). Turn it off under Canvas › Use a Light Agent to Save Tokens.
+- Codex skills can't choose a model, so in Codex these run on your default model.
 
 ## The command
 

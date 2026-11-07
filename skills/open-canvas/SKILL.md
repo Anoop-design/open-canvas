@@ -59,13 +59,13 @@ In the project's repository, run `canvas init`. It creates `.canvas/` (the recor
 
 ## Catching up a project that already exists
 
-A project started before Open Canvas has its decisions scattered through its history. To bring them in:
+A project started before Open Canvas has its decisions scattered through its history. In Claude Code, hand this to the `open-canvas-catchup` skill: it runs on its own on a small model, so reading the history doesn't spend the session's tokens. In Codex, follow that skill's steps yourself, and skim rather than reading everything.
 
-1. Run `canvas init` in the repository.
-2. Read where decisions live: the README and docs, `git log --reverse --date=short --format='%ad %s'`, design notes, and old plans. If the person has the project in Open Canvas, its chats are there too: `canvas moments`, then `canvas found --from MOMENT …` ties a decision to the request it came from.
-3. Keep only the decisions that shaped the project, about 15 at most, and record each with the day it was made:
-   `canvas decided --date 2025-03-14 --title "…" --decision "…" --why "…"`
-4. Tell the person how many you recorded and that they're waiting to be accepted in Open Canvas. Don't commit unless they ask.
+## Keep it light
+
+- Recording is one command. Don't read the whole record first; `canvas decisions` is enough to avoid repeating one.
+- Use `--json` only when you need to parse the output.
+- Leave reading long histories to `open-canvas-catchup`, and exploring directions to `canvas-explorer`.
 
 ## Rules
 

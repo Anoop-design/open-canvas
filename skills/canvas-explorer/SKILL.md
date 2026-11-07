@@ -1,6 +1,9 @@
 ---
 name: canvas-explorer
 description: Interpret a brief, explore distinct directions, and keep them on the Open Canvas board so anyone can pick up from any point later. Use when someone asks to explore directions, try interpretations, compare approaches, or record where a project's thinking has got to, or wants to continue from an earlier idea on the canvas.
+context: fork
+model: haiku
+effort: low
 ---
 
 # Canvas explorer
